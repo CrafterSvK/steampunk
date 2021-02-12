@@ -1,0 +1,4 @@
+{
+  "bot_token": "your_beautiful_discord_token",
+  "database_string": "mariadb://root:root@localhost/rpg"
+}
