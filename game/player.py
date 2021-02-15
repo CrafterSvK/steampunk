@@ -2,8 +2,10 @@ import discord
 
 from database import session
 from database.player import Player as Character
+from database.item import Item as DBItem
 
-from .item import Item
+from game.item import Item
+
 
 class Player:
     def __init__(self, user: discord.Member):
@@ -19,6 +21,6 @@ class Player:
             session.commit()
 
     def get_inventory_contents(self):
-        contents = session.query(Inventory).filter(Inventory.user_id == self.user.id).all()
+        contents = session.query(DBItem).filter(DBItem.user_id == self.user.id).all()
 
-        print([Item(item.item_rid) for item in contents])
+        return [Item(item.entity_id) for item in contents]

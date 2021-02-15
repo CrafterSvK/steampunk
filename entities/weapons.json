@@ -1,0 +1,9 @@
+{
+  "knife": {
+    "name": "Butcher's knife",
+    "type": "weapon",
+    "damage": 10,
+    "desc": "Someone would call it a knife, someone tool. Don't tell anyone your intentions"
+  }
+
+}

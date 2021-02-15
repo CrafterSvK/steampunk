@@ -3,7 +3,7 @@ from discord.ext import commands
 
 from database import database
 
-from database import encounter, entity, equipment, item, player, thing
+from database import encounter, equipment, modifier, player, item
 
 bot = commands.Bot(command_prefix='$')
 
@@ -18,8 +18,8 @@ async def generatedb(ctx):
     try:
         database.base.metadata.create_all(bind=database.db)
         await ctx.send('Database generated...')
-    except:
-        await ctx.send('Database failed to generate...')
+    except Exception as e:
+        await ctx.send(e)
 
-bot.load_extension('cogs.Player')
+bot.load_extension('cogs.player')
 bot.run(config['bot_token'])

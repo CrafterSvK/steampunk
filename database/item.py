@@ -1,10 +1,11 @@
-from sqlalchemy import Column, BigInteger, Text, VARCHAR
-from sqlalchemy.types import Enum
+import enum
 
+from sqlalchemy import Column, BigInteger, ForeignKey, VARCHAR
 from database import database
+from .player import Player
 
 
-class ItemType(Enum.enum):
+class ItemType(enum.Enum):
     recipe = 1
     weapon = 2
     gear = 3
@@ -16,11 +17,11 @@ class ItemType(Enum.enum):
 
 class Item(database.base):
     """
-    Items should be defined here. Structure is not known. WIP.
+    Spawned item that should belong to someone.
+    user_id is 0 when encounter is wielder.
     """
     __tablename__ = "items"
 
-    item_id = Column(BigInteger, primary_key=True)
-    name = Column(VARCHAR)
-    type = Column(Enum(ItemType))
-    desc = Column(Text)
+    item_id = Column(BigInteger, primary_key=True, autoincrement=True)  # in-game specific item
+    user_id = Column(BigInteger, ForeignKey(Player.user_id))  # user
+    entity_id = Column(VARCHAR(50))  # base of item

@@ -1,3 +1,7 @@
+from entities import weapons
+
+
 class Item:
-    def __init__(self, item_rid):
-        self.item_rid = item_rid
+    def __init__(self, entity_id):
+        self.entity_id = entity_id
+        self.name = weapons[entity_id]['name']

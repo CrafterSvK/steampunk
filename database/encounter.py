@@ -1,20 +1,22 @@
-from sqlalchemy import Column, BigInteger, ForeignKey
+from sqlalchemy import Column, BigInteger, ForeignKey, VARCHAR
 from sqlalchemy.dialects.mysql.types import TINYINT
 from sqlalchemy.orm import relationship
 from database import database
 
-from entity import Entity
+from database.player import Player
 
 
-class Encounters(database.base):
+class Encounter(database.base):
     """
-    Spawned entity with additional characteristics. Same rules applies for Players too.
+    Spawned living-entity with additional/copied characteristics.
+    Same rules apply for Entities as for Players.
     They can wield gear and use weaponry.
     """
     __tablename__ = "encounters"
 
     encounter_id = Column(BigInteger, autoincrement=True, primary_key=True)
-    entity_id = Column(BigInteger, ForeignKey(Entity.entity_id))
+    entity_id = Column(VARCHAR(50))
+    user_id = Column(BigInteger, ForeignKey(Player.user_id))
 
     # Basic attributes
     strength = Column(TINYINT, default=1)
@@ -33,4 +35,4 @@ class Encounters(database.base):
     left_hand = Column(BigInteger, default=0)
     right_hand = Column(BigInteger, default=0)
 
-    entity = relationship('Entity', foreign_keys='Encounter.entity_id')
+    player = relationship('Player', foreign_keys='Encounter.user_id')
