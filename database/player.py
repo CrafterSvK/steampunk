@@ -6,7 +6,7 @@ from sqlalchemy.dialects.mysql.types import TINYINT
 from sqlalchemy.types import Enum
 from sqlalchemy.sql import func
 
-from database import database
+from database.db import db
 from database.equipment import Equipment
 
 
@@ -15,7 +15,7 @@ class SexEnum(enum.Enum):
     male = 2
 
 
-class Player(database.base):
+class Player(db.base):
     """
     Player which is played by people on Discord.
     """

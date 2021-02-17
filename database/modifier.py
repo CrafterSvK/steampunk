@@ -2,11 +2,11 @@ from sqlalchemy import Column, BigInteger, ForeignKey
 from sqlalchemy.dialects.mysql.types import SMALLINT
 from sqlalchemy.orm import relationship
 
-from database import database
+from database.db import db
 from database.item import Item
 
 
-class Modifier(database.base):
+class Modifier(db.base):
     """
     Modifier for "things"
     """

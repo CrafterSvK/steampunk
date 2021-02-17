@@ -1,9 +1,8 @@
 from sqlalchemy import Column, BigInteger, ForeignKey
-from sqlalchemy.orm import relationship
-from database import database
+from database.db import db
 
 
-class Equipment(database.base):
+class Equipment(db.base):
     """
     Equipment should probably be merged with Player. Who knows?
     """

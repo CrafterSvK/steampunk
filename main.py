@@ -1,11 +1,9 @@
 from config import config
 from discord.ext import commands
 
-from database import database
+from database.db import db
 
-from database import encounter, equipment, modifier, player, item
-
-bot = commands.Bot(command_prefix='$')
+bot = commands.Bot(command_prefix='?')
 
 
 @bot.command()
@@ -16,7 +14,7 @@ async def hello(ctx):
 @bot.command()
 async def generatedb(ctx):
     try:
-        database.base.metadata.create_all(bind=database.db)
+        db.base.metadata.create_all(bind=db.db)
         await ctx.send('Database generated...')
     except Exception as e:
         await ctx.send(e)

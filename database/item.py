@@ -1,8 +1,8 @@
 import enum
 
 from sqlalchemy import Column, BigInteger, ForeignKey, VARCHAR
-from database import database
-from .player import Player
+from database.db import db
+from database.player import Player
 
 
 class ItemType(enum.Enum):
@@ -15,7 +15,7 @@ class ItemType(enum.Enum):
     misc = 99
 
 
-class Item(database.base):
+class Item(db.base):
     """
     Spawned item that should belong to someone.
     user_id is 0 when encounter is wielder.

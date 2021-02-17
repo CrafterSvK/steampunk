@@ -1,12 +1,11 @@
 from sqlalchemy import Column, BigInteger, ForeignKey, VARCHAR
 from sqlalchemy.dialects.mysql.types import TINYINT
 from sqlalchemy.orm import relationship
-from database import database
-
+from database.db import db
 from database.player import Player
 
 
-class Encounter(database.base):
+class Encounter(db.base):
     """
     Spawned living-entity with additional/copied characteristics.
     Same rules apply for Entities as for Players.

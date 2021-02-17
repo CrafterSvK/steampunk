@@ -1,9 +1,17 @@
 {
   "knife": {
     "name": "Butcher's knife",
-    "type": "weapon",
+    "type": "cold",
+    "equip_slot": "hand",
     "damage": 10,
-    "desc": "Someone would call it a knife, someone tool. Don't tell anyone your intentions"
+    "desc": "Someone would call it a knife, someone tool. Don't tell anyone your intentions."
+  },
+  "derringer": {
+    "name": "Derringer",
+    "type": "gun",
+    "equip_slot": "hand",
+    "damage": 10,
+    "desc": "Women weapon? I don't think so."
   }
 
 }
